@@ -1,5 +1,5 @@
 {
-    "conditions": [
+    "Conditions": [
         {
             "id": "cond_0",
             "name": "Abdominal aortic aneurysm",
@@ -1546,7 +1546,7 @@
             "type": "Infections and poisoning"
         }
     ],
-    "therapies": [
+    "Therapies": [
         {
             "id": "ther_0",
             "name": "Abortion",

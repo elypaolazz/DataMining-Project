@@ -3,8 +3,11 @@ import requests
 import json
 from bs4 import BeautifulSoup
 from tqdm import tqdm
-#from ..src.data_collection.utilities import cond_ther_collection, patients_collection, generate_full_patients 
-from DataMining-Project.src.data_collection.utilities import *
+import sys
+
+sys.path.append('../')
+from src.data_collection.utilities import cond_ther_collection, patients_collection, generate_full_patients 
+
 
 # CONDITION DATA COLLECTION
 cond_url = "https://www.nhsinform.scot/illnesses-and-conditions/a-to-z"

@@ -7,6 +7,8 @@ import json
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 from names_dataset import NameDataset
+from multiprocessing import Process
+
 
 #######################
 # utilities functions #
@@ -60,7 +62,7 @@ def cond_ther_collection(page_url, topic):
 
     # and obtain the content
     soup_cond = BeautifulSoup(r.text, 'lxml')
-    print("> {topic} web page obtained")
+    print(f'> {topic} web page obtained')
 
     # the info is stored in the 'a' tags, with class 'nhs-uk__az-link'
     links = soup_cond.find_all('a',attrs={"class":"nhs-uk__az-link"})
@@ -165,7 +167,7 @@ def cond_ther_collection(page_url, topic):
 ####################################
 # PATIENTS names generate function #
 ####################################         
-def patients_collection():
+def patients_collection(n_of_female, n_of_male):
     """
     Collect data about people's name from NameDataset and generate a dictionary
     """
@@ -174,9 +176,9 @@ def patients_collection():
     nd = NameDataset()
     print(f"> Select most popular italian names")
     # female names
-    list_name_F = nd.get_top_names(n=200, gender='Female', country_alpha2='IT')['IT']['F']
+    list_name_F = nd.get_top_names(n=n_of_female, gender='Female', country_alpha2='IT')['IT']['F']
     # male names
-    list_name_M = nd.get_top_names(n=200, gender='Male', country_alpha2='IT')['IT']['M']
+    list_name_M = nd.get_top_names(n=n_of_male, gender='Male', country_alpha2='IT')['IT']['M']
 
     # female placeholder
     gender_F = ["Female"]*len(list_name_F)
@@ -233,7 +235,7 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
         # CONDITIONS
 
         # obtain the number of conditions to generate
-        NUM_OF_CONDITIONS = random.sample(range(1,6), 1)[0]
+        NUM_OF_CONDITIONS = random.sample(range(1,50), 1)[0]
         # print(f'  * Number of conditions: {NUM_OF_CONDITIONS}')
 
         # get a copy of all the possible conditions
@@ -277,8 +279,8 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
             # setup
             CREATE_NEW_TRIALS = True
 
-            # obtain the number of conditions to generate
-            NUM_OF_TRIALS = random.sample(range(1,5), 1)[0]
+            # obtain the number of therapies to generate
+            NUM_OF_TRIALS = random.sample(range(1,30), 1)[0]
             # print(f"  * Number of trials for condition '{condition['id']}': {NUM_OF_TRIALS}")
 
             # get a copy of all the possible therapies
@@ -286,42 +288,43 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
 
             temp_min_date = condition['diagnosed']
             for idx in range(NUM_OF_TRIALS):
+                if CREATE_NEW_TRIALS:
 
-            if CREATE_NEW_TRIALS:
+                    # create trial dictionary
+                    temp_trial = {}
 
-                # create trial dictionary
-                temp_trial = {}
+                    # set 'id' 
+                    temp_trial['id'] = condition['id'] + f'_t{idx+1}'
 
-                # set 'id' 
-                temp_trial['id'] = condition['id'] + f'_t{idx+1}'
+                    # set 'start'
+                    temp_trial['start'] = generate_random_date(min_date=temp_min_date, type="trial")
 
-                # set 'start'
-                temp_trial['start'] = generate_random_date(min_date=temp_min_date, type="trial")
+                    # set 'end' 
+                    temp_trial_end = generate_random_date(min_date=temp_trial['start'], type="trial")
+                    temp_trial['end'] = temp_trial_end
+                    temp_min_date = temp_trial_end
 
-                # set 'end' 
-                temp_trial_end = generate_random_date(min_date=temp_trial['start'], type="trial")
-                temp_trial['end'] = temp_trial_end
-                temp_min_date = temp_trial_end
+                    # set 'condition'
+                    temp_trial['condition'] = condition['id']
 
-                # set 'condition'
-                temp_trial['condition'] = condition['id']
+                    # set 'therapy'
+                    temp_ther_id = get_random_id(list_of_therapies_ids_copy)
+                    temp_trial['therapy'] = temp_ther_id
+                    list_of_therapies_ids_copy.remove(temp_ther_id) # ensure that there are no duplicates therapies
 
-                # set 'therapy'
-                temp_ther_id = get_random_id(list_of_therapies_ids_copy)
-                temp_trial['therapy'] = temp_ther_id
-                list_of_therapies_ids_copy.remove(temp_ther_id) # ensure that there are no duplicates therapies
+                    # set 'successful'
+                    SUCC = random.sample(range(0,100), 1)[0]
+                    temp_trial['successful'] = SUCC
 
-                # set 'successful'
-                SUCC = random.sample(range(0,100), 1)[0]
-                temp_trial['successful'] = SUCC
+                    if SUCC > 90:
+                        condition['cured'] = temp_trial['end']
+                        CREATE_NEW_TRIALS = False
 
-                if SUCC > 75:
-                    condition['cured'] = temp_trial['end']
-                    CREATE_NEW_TRIALS = False
-
-                # add the trial dictionary to the patient
-                patient_dict['trials'].append(temp_trial)
+                    # add the trial dictionary to the patient
+                    patient_dict['trials'].append(temp_trial)
 
       # print("-"*100)
    
     return patients_dict
+
+

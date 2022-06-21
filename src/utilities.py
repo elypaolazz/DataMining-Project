@@ -176,10 +176,13 @@ def patients_collection(n_of_female, n_of_male):
     nd = NameDataset()
     print(f"> Select most popular italian names")
     # female names
-    list_name_F = nd.get_top_names(n=n_of_female, gender='Female', country_alpha2='IT')['IT']['F']
+    fem_names_IT = nd.get_top_names(n=int(n_of_female/2), gender='Female', country_alpha2='IT')['IT']['F']
+    fem_names_GB = nd.get_top_names(n=int(n_of_female/2), gender='Female', country_alpha2='GB')['GB']['F']
+    list_name_F = fem_names_IT + fem_names_GB
     # male names
-    list_name_M = nd.get_top_names(n=n_of_male, gender='Male', country_alpha2='IT')['IT']['M']
-
+    male_names_IT = nd.get_top_names(n=int(n_of_male/2), gender='Male', country_alpha2='IT')['IT']['M']
+    male_names_GB = nd.get_top_names(n=int(n_of_male/2), gender='Male', country_alpha2='GB')['GB']['M']
+    list_name_M = male_names_IT + male_names_GB
     # female placeholder
     gender_F = ["Female"]*len(list_name_F)
     # male placeholder
@@ -235,7 +238,7 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
         # CONDITIONS
 
         # obtain the number of conditions to generate
-        NUM_OF_CONDITIONS = random.sample(range(1,50), 1)[0]
+        NUM_OF_CONDITIONS = random.sample(range(1,40), 1)[0]
         # print(f'  * Number of conditions: {NUM_OF_CONDITIONS}')
 
         # get a copy of all the possible conditions
@@ -280,7 +283,7 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
             CREATE_NEW_TRIALS = True
 
             # obtain the number of therapies to generate
-            NUM_OF_TRIALS = random.sample(range(1,30), 1)[0]
+            NUM_OF_TRIALS = random.sample(range(1,25), 1)[0]
             # print(f"  * Number of trials for condition '{condition['id']}': {NUM_OF_TRIALS}")
 
             # get a copy of all the possible therapies

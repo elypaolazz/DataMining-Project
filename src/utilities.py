@@ -47,6 +47,17 @@ def get_random_id(list_of_ids):
     """
     return random.sample(list_of_ids,1)[0]
 
+def from_dict_to_df(dict):
+    """
+    Convert a dictionary into pandas DataFrame
+    """
+    new_dict = {}
+    for item in dict:
+        id = item.remove('id')
+        new_dict[id] = item
+    df = pd.DataFrame.from_dict(new_dict, orient="index")
+    return df
+
 #################################
 # COND & THER generate function #
 #################################
@@ -174,7 +185,7 @@ def patients_collection(n_of_female, n_of_male):
     # import data
     print(f"> Loading Name dataset")
     nd = NameDataset()
-    print(f"> Select most popular italian names")
+    print(f"> Select most popular italian/english names")
     # female names
     fem_names_IT = nd.get_top_names(n=int(n_of_female/2), gender='Female', country_alpha2='IT')['IT']['F']
     fem_names_GB = nd.get_top_names(n=int(n_of_female/2), gender='Female', country_alpha2='GB')['GB']['F']
@@ -238,7 +249,7 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
         # CONDITIONS
 
         # obtain the number of conditions to generate
-        NUM_OF_CONDITIONS = random.sample(range(1,40), 1)[0]
+        NUM_OF_CONDITIONS = random.sample(range(1,20), 1)[0]
         # print(f'  * Number of conditions: {NUM_OF_CONDITIONS}')
 
         # get a copy of all the possible conditions
@@ -283,7 +294,7 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
             CREATE_NEW_TRIALS = True
 
             # obtain the number of therapies to generate
-            NUM_OF_TRIALS = random.sample(range(1,25), 1)[0]
+            NUM_OF_TRIALS = random.sample(range(0,12), 1)[0]
             # print(f"  * Number of trials for condition '{condition['id']}': {NUM_OF_TRIALS}")
 
             # get a copy of all the possible therapies
@@ -330,4 +341,47 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
    
     return patients_dict
 
+#######################################
+# final algorithm utilities functions #
+#######################################
 
+def utility_matrix(patient_id):
+    # open dataset
+    with open('../../data/full_data.json', 'r') as file:
+        data = json.load(file)
+    
+    conditions_df = pd.DataFrame(data['Conditions'])
+    therapies_df = pd.DataFrame(data['Therapies'])
+    patients_df = pd.DataFrame(data['Patients'])
+    
+    # initialize empty utility matrix
+    prova = pd.DataFrame(columns = list(therapies_df['id'].values), index= list(conditions_df['id'].values))
+    
+    # extract data for the patient
+    pat = patients_df[patients_df.id == patient_id]
+
+    # trials and cond
+    trials = pd.DataFrame(pat.trials.values[0])
+    cond = pd.DataFrame(pat.conditions.values[0])
+    
+    # add true cond_id to trial data
+    trials['cond_id'] = ""
+
+    for idx,row in trials.iterrows():
+        pat_cond = row['condition']
+        cond_id = cond[cond.id == pat_cond].kind.values[0]
+        trials.loc[idx,'cond_id'] = cond_id
+        
+    # fill utility matrix
+    for idx,row in trials.iterrows():
+        matrix_pat = prova
+        
+        cond = row['cond_id']
+        ther = row['therapy']
+        succ = row['successful']
+        matrix_pat.loc[cond,ther] = succ
+    # normalize
+    norm_matrix = matrix_pat.sub(matrix_pat.mean(axis=1), axis=0)
+    final_matrix = norm_matrix.fillna(0)
+    return final_matrix
+    

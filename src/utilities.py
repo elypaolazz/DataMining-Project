@@ -203,14 +203,20 @@ def patients_collection(n_of_female, n_of_male):
     names = list_name_F + list_name_M
     gender = gender_F + gender_M
 
+    # create ages vector
+    ages = []
+    for n in range(0,10000):
+        age = random.sample(range(18,99), 1)[0]
+        ages.append(age)
+    
     # create df
     patients_df = pd.DataFrame(
-        data=zip(names, gender),
-        columns=["patient_name","patient_gender"]
+        data=zip(names, gender, ages),
+        columns=["patient_name","patient_gender","patient_age"]
     )
     patients_df
 
-    # sorder data
+    # sort data
     patients_df = patients_df.sort_values("patient_name").reset_index(drop=True)
 
     # add column with conditions ids
@@ -218,7 +224,7 @@ def patients_collection(n_of_female, n_of_male):
     patients_df["patient_id"] = patients_ids
 
     # reorder columns
-    patients_df = patients_df[["patient_id", "patient_name", "patient_gender"]]
+    patients_df = patients_df[["patient_id", "patient_name", "patient_gender","patient_age"]]
 
     # create the dict
     RESULT_DICT = {"Patients":[]}
@@ -228,6 +234,7 @@ def patients_collection(n_of_female, n_of_male):
                 "id":row["patient_id"],
                 "name":row["patient_name"],
                 "gender":row["patient_gender"],
+                "age":row["patient_age"],
                 "conditions": [],
                 "trials": [],
             }
@@ -237,7 +244,7 @@ def patients_collection(n_of_female, n_of_male):
 #######################################################
 # PATIENTS conditions and therapies generate function #
 #######################################################
-def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therapies_ids):
+def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therapies_ids, max_n_cond, max_n_ther):
     """
     Generate conditions and therapies for each patients and fill the patients dictionary
     """
@@ -249,7 +256,7 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
         # CONDITIONS
 
         # obtain the number of conditions to generate
-        NUM_OF_CONDITIONS = random.sample(range(1,20), 1)[0]
+        NUM_OF_CONDITIONS = random.sample(range(1,max_n_cond), 1)[0]
         # print(f'  * Number of conditions: {NUM_OF_CONDITIONS}')
 
         # get a copy of all the possible conditions
@@ -294,7 +301,7 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
             CREATE_NEW_TRIALS = True
 
             # obtain the number of therapies to generate
-            NUM_OF_TRIALS = random.sample(range(0,12), 1)[0]
+            NUM_OF_TRIALS = random.sample(range(0,max_n_ther), 1)[0]
             # print(f"  * Number of trials for condition '{condition['id']}': {NUM_OF_TRIALS}")
 
             # get a copy of all the possible therapies
@@ -347,11 +354,11 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
 
 def utility_matrix(patient_id):
     # open dataset
-    with open('../../data/full_data.json', 'r') as file:
+    with open('../../data/full_data2.json', 'r') as file:
         data = json.load(file)
     
-    conditions_df = pd.DataFrame(data['Conditions'])
-    therapies_df = pd.DataFrame(data['Therapies'])
+    conditions_df = pd.DataFrame(data['Conditions'])[:20]
+    therapies_df = pd.DataFrame(data['Therapies'])[:10]
     patients_df = pd.DataFrame(data['Patients'])
     
     # initialize empty utility matrix
@@ -381,7 +388,8 @@ def utility_matrix(patient_id):
         succ = row['successful']
         matrix_pat.loc[cond,ther] = succ
     # normalize
-    norm_matrix = matrix_pat.sub(matrix_pat.mean(axis=1), axis=0)
-    final_matrix = norm_matrix.fillna(0)
+    # norm_matrix = matrix_pat.sub(matrix_pat.mean(axis=1), axis=0)
+    # final_matrix = norm_matrix.fillna(0)
+    final_matrix = matrix_pat.fillna(0)
     return final_matrix
     

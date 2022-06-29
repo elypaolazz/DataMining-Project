@@ -1,0 +1,15 @@
+Recommended therapies for pat_6 to treat condition Acute cholecystitis: 
+1^: ther_60  |  0  |  Medicines and medical aids  |  cured with success on pat_5698 (0.05297777738981646 cosine similarity with pat_6) 
+2^: ther_6  |  1  |  Medicines and medical aids  |  cured with success on pat_5460 (0.04156881335265816 cosine similarity with pat_6) 
+3^: ther_10  |  2  |  Medicines and medical aids  |  cured with success on pat_4655 (0.03814084581454191 cosine similarity with pat_6) 
+4^: ther_21  |  3  |  Surgical procedures  |  cured with success on pat_5695 (0.017236971078787522 cosine similarity with pat_6) 
+5^: ther_45  |  4  |  Surgical procedures  |  cured with success on pat_7468 (0.01368658941925871 cosine similarity with pat_6) 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'funzione(pat_6, cond_2' 
+ Recommended therapies for pat_6 to treat condition ['Acute cholecystitis']: 
+1^: ther_60  |  0  |  Medicines and medical aids  |  cured with success on pat_5698 (0.05297777738981646 cosine similarity with pat_6) 
+2^: ther_6  |  1  |  Medicines and medical aids  |  cured with success on pat_5460 (0.04156881335265816 cosine similarity with pat_6) 
+3^: ther_10  |  2  |  Medicines and medical aids  |  cured with success on pat_4655 (0.03814084581454191 cosine similarity with pat_6) 
+4^: ther_21  |  3  |  Surgical procedures  |  cured with success on pat_5695 (0.017236971078787522 cosine similarity with pat_6) 
+5^: ther_45  |  4  |  Surgical procedures  |  cured with success on pat_7468 (0.01368658941925871 cosine similarity with pat_6) 
+-----------------------------------------------------------------------------------------------------------------------------------------

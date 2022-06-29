@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from tqdm import tqdm
 from names_dataset import NameDataset
 from multiprocessing import Process
+import itertools
 
 
 #######################
@@ -47,16 +48,6 @@ def get_random_id(list_of_ids):
     """
     return random.sample(list_of_ids,1)[0]
 
-def from_dict_to_df(dict):
-    """
-    Convert a dictionary into pandas DataFrame
-    """
-    new_dict = {}
-    for item in dict:
-        id = item.remove('id')
-        new_dict[id] = item
-    df = pd.DataFrame.from_dict(new_dict, orient="index")
-    return df
 
 #################################
 # COND & THER generate function #
@@ -98,9 +89,12 @@ def cond_ther_collection(page_url, topic):
     # obtain info about type
     # initialize placeholder
     types_list = []
+    
+    # keep track of errors
+    errors_str = "> There were some errors in the retrieving of the data:\n"
 
     # iterate over conditions pages links
-    for link in tqdm(href_list, desc="Scraping Web Pages"):
+    for link in tqdm(href_list, desc="> Scraping Web Pages"):
         
         # connect
         r = requests.get(link,headers=header)
@@ -119,16 +113,18 @@ def cond_ther_collection(page_url, topic):
                 types_list.append(links[2].text)
 
             except Exception as e:
-                types_list.append("ERROR")
-                print(f"> Error while retrieving the page '{link}'.")
-                print(f"  Error Details: {str(e)}")
+                types_list.append("ERROR")                
+                errors_str += f"   * Error while retrieving page '{link}' [{str(e)}]\n"
+
 
         # if the page could not be reached, print a warning
         else:
             types_list.append("ERROR")
-            print(f"> Error while retrieving the page '{link}'.")
-            print(f"  Status Code: {r.status_code}")
+            errors_str += f"   * Error while retrieving page '{link}' [status code was '{r.status_code}' instead of 200]\n"
 
+    # show errors
+    print(errors_str)
+    
     # aggragate data
     # create the df from lists
     temp_df = pd.DataFrame(
@@ -348,17 +344,17 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
    
     return patients_dict
 
-#######################################
-# final algorithm utilities functions #
-#######################################
+################################################
+# reccomandation algorithm utilities functions #
+################################################
 
 def utility_matrix(patient_id):
     # open dataset
-    with open('../../data/full_data2.json', 'r') as file:
+    with open('../../data/full_data.json', 'r') as file:
         data = json.load(file)
     
-    conditions_df = pd.DataFrame(data['Conditions'])[:20]
-    therapies_df = pd.DataFrame(data['Therapies'])[:10]
+    conditions_df = pd.DataFrame(data['Conditions'])
+    therapies_df = pd.DataFrame(data['Therapies'])
     patients_df = pd.DataFrame(data['Patients'])
     
     # initialize empty utility matrix
@@ -392,4 +388,48 @@ def utility_matrix(patient_id):
     # final_matrix = norm_matrix.fillna(0)
     final_matrix = matrix_pat.fillna(0)
     return final_matrix
+
+def utility_matrix_single_p(data, patients_id):
+    # # open dataset
+    # with open('../../data/full_data.json', 'r') as file:
+    #     data = json.load(file)
     
+    conditions_df = pd.DataFrame(data['Conditions'])
+    therapies_df = pd.DataFrame(data['Therapies'])
+    patients_df = pd.DataFrame(data['Patients'])
+    
+    # initialize empty utility matrix
+    c = list(itertools.product(conditions_df.id.values, therapies_df.id.values))
+    prova = pd.DataFrame(columns = c, index= list([patients_id]))
+    
+    # extract data for the patient
+    pat = patients_df[patients_df.id == patients_id]
+
+    # trials and cond
+    trials = pd.DataFrame(pat.trials.values[0])
+    cond = pd.DataFrame(pat.conditions.values[0])
+    
+    # add true cond_id to trial data
+    trials['cond_id'] = ""
+
+    for idx,row in trials.iterrows():
+        pat_cond = row['condition']
+        cond_id = cond[cond.id == pat_cond].kind.values[0]
+        trials.loc[idx,'cond_id'] = cond_id
+        
+    # fill utility matrix
+    for idx,row in trials.iterrows():
+        matrix_pat = prova
+        
+        cond = row['cond_id']
+        ther = row['therapy']
+        succ = row['successful']
+        col = (cond, ther)
+        matrix_pat.at[patients_id, col] = succ
+    # normalize
+    # norm_matrix = matrix_pat.sub(matrix_pat.mean(axis=1), axis=0)
+    # final_matrix = norm_matrix.fillna(0)
+    final_matrix = matrix_pat.fillna(0)
+    return final_matrix
+ 
+   

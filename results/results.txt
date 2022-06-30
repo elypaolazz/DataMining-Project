@@ -1,15 +1,185 @@
-Recommended therapies for pat_6 to treat condition Acute cholecystitis: 
-1^: ther_60  |  0  |  Medicines and medical aids  |  cured with success on pat_5698 (0.05297777738981646 cosine similarity with pat_6) 
-2^: ther_6  |  1  |  Medicines and medical aids  |  cured with success on pat_5460 (0.04156881335265816 cosine similarity with pat_6) 
-3^: ther_10  |  2  |  Medicines and medical aids  |  cured with success on pat_4655 (0.03814084581454191 cosine similarity with pat_6) 
-4^: ther_21  |  3  |  Surgical procedures  |  cured with success on pat_5695 (0.017236971078787522 cosine similarity with pat_6) 
-5^: ther_45  |  4  |  Surgical procedures  |  cured with success on pat_7468 (0.01368658941925871 cosine similarity with pat_6) 
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_0)'
+ > Recommended therapies for pat_0 to treat condition Abdominal aortic aneurysm: 
+1^: ther_63  |  0  |  Medicines and medical aids  |  cured with success on pat_1121 ([[0.04811156]] cosine similarity with pat_0) 
+2^: ther_5  |  1  |  Medicines and medical aids  |  cured with success on pat_397 ([[0.02845245]] cosine similarity with pat_0) 
+3^: ther_53  |  2  |  Counselling and therapies  |  cured with success on pat_6311 ([[0.02759522]] cosine similarity with pat_0) 
+4^: ther_27  |  3  |  Non-surgical procedures  |  cured with success on pat_343 ([[0.02555506]] cosine similarity with pat_0) 
+5^: ther_36  |  4  |  Medicines and medical aids  |  cured with success on pat_2403 ([[0.02004201]] cosine similarity with pat_0) 
 -----------------------------------------------------------------------------------------------------------------------------------------
-Output for 'funzione(pat_6, cond_2' 
- Recommended therapies for pat_6 to treat condition ['Acute cholecystitis']: 
-1^: ther_60  |  0  |  Medicines and medical aids  |  cured with success on pat_5698 (0.05297777738981646 cosine similarity with pat_6) 
-2^: ther_6  |  1  |  Medicines and medical aids  |  cured with success on pat_5460 (0.04156881335265816 cosine similarity with pat_6) 
-3^: ther_10  |  2  |  Medicines and medical aids  |  cured with success on pat_4655 (0.03814084581454191 cosine similarity with pat_6) 
-4^: ther_21  |  3  |  Surgical procedures  |  cured with success on pat_5695 (0.017236971078787522 cosine similarity with pat_6) 
-5^: ther_45  |  4  |  Surgical procedures  |  cured with success on pat_7468 (0.01368658941925871 cosine similarity with pat_6) 
+Time of program execution: 0:02:22.094000
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition Acute lymphoblastic leukaemia: Children: 
+1^: ther_39  |  0  |  Non-surgical procedures  |  cured with success on pat_3020 ([[0.03447362]] cosine similarity with pat_0) 
+2^: ther_5  |  1  |  Medicines and medical aids  |  cured with success on pat_8022 ([[0.03403221]] cosine similarity with pat_0) 
+3^: ther_53  |  2  |  Counselling and therapies  |  cured with success on pat_9170 ([[0.03163867]] cosine similarity with pat_0) 
+4^: ther_49  |  3  |  Surgical procedures  |  cured with success on pat_8517 ([[0.02814532]] cosine similarity with pat_0) 
+5^: ther_51  |  4  |  Scans and X-rays  |  cured with success on pat_2521 ([[0.02388878]] cosine similarity with pat_0) 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:02:03.313000
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition Acute lymphoblastic leukaemia: Children: 
+1^: ther_21  |  0  |  Surgical procedures  |  cured with success on pat_584 ([[0.03973325]] cosine similarity with pat_0) 
+2^: ther_5  |  1  |  Medicines and medical aids  |  cured with success on pat_8022 ([[0.02113872]] cosine similarity with pat_0) 
+3^: ther_53  |  2  |  Counselling and therapies  |  cured with success on pat_9170 ([[0.02044553]] cosine similarity with pat_0) 
+4^: ther_51  |  3  |  Scans and X-rays  |  cured with success on pat_2521 ([[0.01096464]] cosine similarity with pat_0) 
+5^: ther_49  |  4  |  Surgical procedures  |  cured with success on pat_8517 ([[0.00877587]] cosine similarity with pat_0) 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:02:26.985000
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition Acute lymphoblastic leukaemia: Children: 
+1^: ther_21  |  0  |  Surgical procedures  |  cured with success on pat_584 ([[0.03973325]] cosine similarity with pat_0) 
+2^: ther_5  |  1  |  Medicines and medical aids  |  cured with success on pat_8022 ([[0.02113872]] cosine similarity with pat_0) 
+3^: ther_53  |  2  |  Counselling and therapies  |  cured with success on pat_9170 ([[0.02044553]] cosine similarity with pat_0) 
+4^: ther_51  |  3  |  Scans and X-rays  |  cured with success on pat_2521 ([[0.01096464]] cosine similarity with pat_0) 
+5^: ther_49  |  4  |  Surgical procedures  |  cured with success on pat_8517 ([[0.00877587]] cosine similarity with pat_0) 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:02:37.906000
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition Acute lymphoblastic leukaemia: Children: 
+1^: ther_21  |  0  |  Surgical procedures  |  nan 
+2^: ther_5  |  1  |  Medicines and medical aids  |  nan 
+3^: ther_53  |  2  |  Counselling and therapies  |  nan 
+4^: ther_51  |  3  |  Scans and X-rays  |  nan 
+5^: ther_49  |  4  |  Surgical procedures  |  nan 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:01:59.703000
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition Acute lymphoblastic leukaemia: Children: 
+1^: ther_21  |  0  |  Surgical procedures  |  nan 
+2^: ther_5  |  1  |  Medicines and medical aids  |  nan 
+3^: ther_53  |  2  |  Counselling and therapies  |  nan 
+4^: ther_51  |  3  |  Scans and X-rays  |  nan 
+5^: ther_49  |  4  |  Surgical procedures  |  nan 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:02:26.359000
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: ther_21  |  0  |  Surgical procedures 
+2^: ther_5  |  1  |  Medicines and medical aids 
+3^: ther_53  |  2  |  Counselling and therapies 
+4^: ther_51  |  3  |  Scans and X-rays 
+5^: ther_49  |  4  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:02:16.609000
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: ther_21  |  0  |  Surgical procedures 
+2^: ther_5  |  1  |  Medicines and medical aids 
+3^: ther_53  |  2  |  Counselling and therapies 
+4^: ther_51  |  3  |  Scans and X-rays 
+5^: ther_49  |  4  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:02:45.812000
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: ther_21  |  0  |  Surgical procedures 
+2^: ther_5  |  1  |  Medicines and medical aids 
+3^: ther_53  |  2  |  Counselling and therapies 
+4^: ther_51  |  3  |  Scans and X-rays 
+5^: ther_49  |  4  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:02:08.297000
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: ther_21  |  0  |  Surgical procedures 
+2^: ther_5  |  1  |  Medicines and medical aids 
+3^: ther_53  |  2  |  Counselling and therapies 
+4^: ther_51  |  3  |  Scans and X-rays 
+5^: ther_49  |  4  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:02:23.312000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: ther_21  |  0  |  Surgical procedures 
+2^: ther_5  |  1  |  Medicines and medical aids 
+3^: ther_53  |  2  |  Counselling and therapies 
+4^: ther_51  |  3  |  Scans and X-rays 
+5^: ther_49  |  4  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:01:59.422000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: ther_21  |  0  |  Surgical procedures 
+2^: ther_5  |  1  |  Medicines and medical aids 
+3^: ther_53  |  2  |  Counselling and therapies 
+4^: ther_51  |  3  |  Scans and X-rays 
+5^: ther_49  |  4  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:01:59.594000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: 0  |  ther_21  |  Surgical procedures 
+2^: 1  |  ther_5  |  Medicines and medical aids 
+3^: 2  |  ther_53  |  Counselling and therapies 
+4^: 3  |  ther_51  |  Scans and X-rays 
+5^: 4  |  ther_49  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:02:25.515000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: 0  |  ther_21  |  Surgical procedures 
+2^: 1  |  ther_5  |  Medicines and medical aids 
+3^: 2  |  ther_53  |  Counselling and therapies 
+4^: 3  |  ther_51  |  Scans and X-rays 
+5^: 4  |  ther_49  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:02:00.953000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: 0  |  ther_21  |  Surgical procedures 
+2^: 1  |  ther_5  |  Medicines and medical aids 
+3^: 2  |  ther_53  |  Counselling and therapies 
+4^: 3  |  ther_51  |  Scans and X-rays 
+5^: 4  |  ther_49  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:01:57.188000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: 0    Coronary artery bypass graft
+Name: name, dtype: object  |  ther_21  |  Surgical procedures 
+2^: 1    Antidepressants
+Name: name, dtype: object  |  ther_5  |  Medicines and medical aids 
+3^: 2    Occupational therapy
+Name: name, dtype: object  |  ther_53  |  Counselling and therapies 
+4^: 3    MRI scan
+Name: name, dtype: object  |  ther_51  |  Scans and X-rays 
+5^: 4    Mastectomy
+Name: name, dtype: object  |  ther_49  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:01:59.735000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: ther_21  |  Coronary artery bypass graft  |  Surgical procedures 
+2^: ther_5  |  Antidepressants  |  Medicines and medical aids 
+3^: ther_53  |  Occupational therapy  |  Counselling and therapies 
+4^: ther_51  |  MRI scan  |  Scans and X-rays 
+5^: ther_49  |  Mastectomy  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:01:59.156000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_0 cond_4)'
+ > Recommended therapies for pat_0 to treat condition 'Acute lymphoblastic leukaemia: Children': 
+1^: ther_21  |  Coronary artery bypass graft  |  Surgical procedures 
+2^: ther_5  |  Antidepressants  |  Medicines and medical aids 
+3^: ther_53  |  Occupational therapy  |  Counselling and therapies 
+4^: ther_51  |  MRI scan  |  Scans and X-rays 
+5^: ther_49  |  Mastectomy  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:03:10.594000 
 -----------------------------------------------------------------------------------------------------------------------------------------

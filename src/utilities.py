@@ -384,9 +384,9 @@ def utility_matrix(patient_id):
         succ = row['successful']
         matrix_pat.loc[cond,ther] = succ
     # normalize
-    # norm_matrix = matrix_pat.sub(matrix_pat.mean(axis=1), axis=0)
-    # final_matrix = norm_matrix.fillna(0)
-    final_matrix = matrix_pat.fillna(0)
+    norm_matrix = matrix_pat.sub(matrix_pat.mean(axis=1), axis=0)
+    final_matrix = norm_matrix.fillna(0)
+    # final_matrix = matrix_pat.fillna(0)
     return final_matrix
 
 def utility_matrix_single_p(data, patients_id):
@@ -427,9 +427,9 @@ def utility_matrix_single_p(data, patients_id):
         col = (cond, ther)
         matrix_pat.at[patients_id, col] = succ
     # normalize
-    # norm_matrix = matrix_pat.sub(matrix_pat.mean(axis=1), axis=0)
-    # final_matrix = norm_matrix.fillna(0)
-    final_matrix = matrix_pat.fillna(0)
+    norm_matrix = matrix_pat.sub(matrix_pat.mean(axis=1), axis=0)
+    final_matrix = norm_matrix.fillna(0)
+    # final_matrix = matrix_pat.fillna(0)
     return final_matrix
  
    

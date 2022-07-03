@@ -1,0 +1,66 @@
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data_1k.json pat_0 cond_1)'
+ > Recommended therapies for pat_0 to treat condition 'Acne' (1000 patients dataset): 
+1^: ther_25  |  Decongestants  |  Medicines and medical aids 
+2^: ther_65  |  Wisdom tooth removal  |  Dental treatments 
+3^: ther_2  |  Amputation  |  Surgical procedures 
+4^: ther_48  |  Lung transplant  |  Surgical procedures 
+5^: ther_22  |  Corticosteroids  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:00.546000 for 1000 patients 
+-----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data_5k.json pat_0 cond_1)'
+ > Recommended therapies for pat_0 to treat condition 'Acne' (5000 patients dataset): 
+1^: ther_51  |  MRI scan  |  Scans and X-rays 
+2^: ther_38  |  Hormone replacement therapy (HRT)  |  Medicines and medical aids 
+3^: ther_57  |  Psychotherapy  |  Counselling and therapies 
+4^: ther_1  |  Amniocentesis  |  Biopsies 
+5^: ther_46  |  Local anaesthesia  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:02.703000 for 5000 patients 
+-----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data_10k_test.json pat_0 cond_1)'
+ > Recommended therapies for pat_0 to treat condition 'Acne' (10000 patients dataset): 
+1^: ther_22  |  Corticosteroids  |  Medicines and medical aids 
+2^: ther_59  |  Selective serotonin reuptake inhibitors (SSRIs)  |  Medicines and medical aids 
+3^: ther_30  |  Fluoride  |  Dental treatments 
+4^: ther_15  |  Bronchodilators  |  Medicines and medical aids 
+5^: ther_36  |  Home oxygen treatment  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:07.485000 for 10000 patients 
+-----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data_25k.json pat_0 cond_1)'
+ > Recommended therapies for pat_0 to treat condition 'Acne' (25000 patients dataset): 
+1^: ther_59  |  Selective serotonin reuptake inhibitors (SSRIs)  |  Medicines and medical aids 
+2^: ther_0  |  Abortion  |  Surgical procedures 
+3^: ther_61  |  Transurethral resection of the prostate (TURP)  |  Surgical procedures 
+4^: ther_10  |  Beta-blockers  |  Medicines and medical aids 
+5^: ther_53  |  Occupational therapy  |  Counselling and therapies 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:01:19.203000 for 25000 patients 
+-----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data_50k.json pat_0 cond_1)'
+ > Recommended therapies for pat_0 to treat condition 'Acne' (50000 patients dataset): 
+1^: ther_16  |  Chemotherapy  |  Non-surgical procedures 
+2^: ther_15  |  Bronchodilators  |  Medicines and medical aids 
+3^: ther_62  |  Ultrasound scan  |  Scans and X-rays 
+4^: ther_45  |  Liver transplant  |  Surgical procedures 
+5^: ther_58  |  Radiotherapy  |  Non-surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:05:31.078000 for 50000 patients 
+-----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data_100k.json pat_0 cond_1)'
+ > Recommended therapies for pat_0 to treat condition 'Acne' (100000 patients dataset): 
+1^: ther_16  |  Chemotherapy  |  Non-surgical procedures 
+2^: ther_15  |  Bronchodilators  |  Medicines and medical aids 
+3^: ther_62  |  Ultrasound scan  |  Scans and X-rays 
+4^: ther_45  |  Liver transplant  |  Surgical procedures 
+5^: ther_58  |  Radiotherapy  |  Non-surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:09:31.078000 for 100000 patients 
+-----------------------------------------------------------------------------------------------------------------------------------------

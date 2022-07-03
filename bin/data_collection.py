@@ -54,13 +54,13 @@ ther_dict = cond_ther_collection(ther_url, "Therapies")
 # PATIENTS DATA COLLECTION #
 ############################
 print("Collecting Patients names")
-patients_dict = patients_collection(5, 5)
+patients_dict = patients_collection(n_patients/2, n_patients/2)
 
 print("Generate patients conditions and trials")
 list_of_conditions_ids = [x['id'] for x in cond_dict['Conditions']]
 list_of_therapies_ids = [x['id'] for x in ther_dict['Therapies']]
 
-full_patients_dict = generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therapies_ids, 20, 12)
+full_patients_dict = generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therapies_ids, n_cond_x_pat, n_ther_x_pat)
 
 #####################
 # CREATE FINAL DATA #
@@ -70,6 +70,6 @@ print("Merge data and produce the final dataset")
 final_data_dict = cond_dict | ther_dict | full_patients_dict
 
 # save it as .json
-with open('../data/full_data2.json', 'w') as fp:
+with open(data_path, 'w') as fp:
     json.dump(final_data_dict, fp, indent=4, default=str)
 print("> JSON stored correctly")

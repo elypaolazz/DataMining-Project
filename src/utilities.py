@@ -181,15 +181,22 @@ def patients_collection(n_of_female, n_of_male):
     # import data
     print(f"> Loading Name dataset")
     nd = NameDataset()
-    print(f"> Select most popular italian/english names")
+    print(f"> Select most popular italian/english/spanish names")
     # female names
-    fem_names_IT = nd.get_top_names(n=int(n_of_female/2), gender='Female', country_alpha2='IT')['IT']['F']
-    fem_names_GB = nd.get_top_names(n=int(n_of_female/2), gender='Female', country_alpha2='GB')['GB']['F']
-    list_name_F = fem_names_IT + fem_names_GB
+    fem_names_IT = nd.get_top_names(n=int(n_of_female/4), gender='Female', country_alpha2='IT')['IT']['F']
+    fem_names_GB = nd.get_top_names(n=int(n_of_female/4), gender='Female', country_alpha2='GB')['GB']['F']
+    fem_names_US = nd.get_top_names(n=int(n_of_female/4), gender='Female', country_alpha2='US')['US']['F']
+    fem_names_ES = nd.get_top_names(n=int(n_of_female/4), gender='Female', country_alpha2='ES')['ES']['F']
+
+
+    list_name_F = fem_names_IT + fem_names_GB + fem_names_US + fem_names_ES
     # male names
-    male_names_IT = nd.get_top_names(n=int(n_of_male/2), gender='Male', country_alpha2='IT')['IT']['M']
-    male_names_GB = nd.get_top_names(n=int(n_of_male/2), gender='Male', country_alpha2='GB')['GB']['M']
-    list_name_M = male_names_IT + male_names_GB
+    male_names_IT = nd.get_top_names(n=int(n_of_male/4), gender='Male', country_alpha2='IT')['IT']['M']
+    male_names_GB = nd.get_top_names(n=int(n_of_male/4), gender='Male', country_alpha2='GB')['GB']['M']
+    male_names_US = nd.get_top_names(n=int(n_of_male/4), gender='Male', country_alpha2='US')['US']['M']
+    male_names_ES = nd.get_top_names(n=int(n_of_male/4), gender='Male', country_alpha2='ES')['ES']['M']
+
+    list_name_M = male_names_IT + male_names_GB + male_names_US + male_names_ES
     # female placeholder
     gender_F = ["Female"]*len(list_name_F)
     # male placeholder
@@ -199,16 +206,16 @@ def patients_collection(n_of_female, n_of_male):
     names = list_name_F + list_name_M
     gender = gender_F + gender_M
 
-    # create ages vector
-    ages = []
-    for n in range(0,10000):
-        age = random.sample(range(18,99), 1)[0]
-        ages.append(age)
+    # # create ages vector
+    # ages = []
+    # for n in range(0,10000):
+    #     age = random.sample(range(18,99), 1)[0]
+    #     ages.append(age)
     
     # create df
-    patients_df = pd.DataFrame(
-        data=zip(names, gender, ages),
-        columns=["patient_name","patient_gender","patient_age"]
+    patients_df = pd.DataFrame({"patient_name":names}
+        # data=names
+        # columns=["patient_name"]
     )
     patients_df
 
@@ -220,7 +227,7 @@ def patients_collection(n_of_female, n_of_male):
     patients_df["patient_id"] = patients_ids
 
     # reorder columns
-    patients_df = patients_df[["patient_id", "patient_name", "patient_gender","patient_age"]]
+    patients_df = patients_df[["patient_id", "patient_name"]]
 
     # create the dict
     RESULT_DICT = {"Patients":[]}
@@ -229,8 +236,6 @@ def patients_collection(n_of_female, n_of_male):
             {
                 "id":row["patient_id"],
                 "name":row["patient_name"],
-                "gender":row["patient_gender"],
-                "age":row["patient_age"],
                 "conditions": [],
                 "trials": [],
             }
@@ -348,10 +353,10 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
 # reccomandation algorithm utilities functions #
 ################################################
 
-def utility_matrix(patient_id):
+def utility_matrix(patient_id, data):
     # open dataset
-    with open('../../data/full_data.json', 'r') as file:
-        data = json.load(file)
+    # with open('../../data/full_data.json', 'r') as file:
+    #     data = json.load(file)
     
     conditions_df = pd.DataFrame(data['Conditions'])
     therapies_df = pd.DataFrame(data['Therapies'])
@@ -376,8 +381,9 @@ def utility_matrix(patient_id):
         trials.loc[idx,'cond_id'] = cond_id
         
     # fill utility matrix
+    matrix_pat = prova
     for idx,row in trials.iterrows():
-        matrix_pat = prova
+        # matrix_pat = prova
         
         cond = row['cond_id']
         ther = row['therapy']

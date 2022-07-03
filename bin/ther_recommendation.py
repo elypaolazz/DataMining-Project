@@ -7,22 +7,23 @@ import pandas as pd
 import json
 from tqdm import tqdm
 import sys
-from sklearn.metrics.pairwise import cosine_similarity
+import scipy.spatial.distance as distance
 import time
 from datetime import timedelta
+import os.path
+from os import path
 import warnings
+import sys
 warnings.filterwarnings('ignore')
 # import useful functions
 sys.path.append('../')
-from src.utilities import utility_matrix_single_p
-
-start_time = time.monotonic()
+from src.utilities import utility_matrix
 
 #####################
 # parameter setting #
 #####################
 
-# all the arguments must be passed, the order IS relevant
+# all the arguments must be passed in the right order
 if len(sys.argv) == 5: # NB: 4 because argv[0] is the name of the script
     # dataset path
     data_path = str(sys.argv[1])
@@ -39,7 +40,12 @@ else:
     patient_id = "pat_0"
     cond_id = "cond_0"
     test = "single_run"
-
+    
+####################
+# parameters check #
+####################
+if path.exists(data_path) == False:
+    sys.exit("Dataset path does not exist, try with '../data/full_data.json'")
 
 ############################################
 # open dataset and define global variables #
@@ -53,8 +59,13 @@ conditions_df = pd.DataFrame(data['Conditions'])
 therapies_df = pd.DataFrame(data['Therapies'])
 patients_df = pd.DataFrame(data['Patients'])  
 
-# patient_id = "pat_6"
-# cond_id = "cond_2"
+# check on patient and condition id parameter
+if patient_id not in patients_df.id.values:
+    sys.exit("Patient ID is not in the data")
+if cond_id not in conditions_df.id.values:
+    sys.exit("Condition is not in the data")
+
+# extract condition value
 cond = conditions_df[conditions_df.id == cond_id].name.values[0]
     
 ################################
@@ -78,59 +89,63 @@ def my_program2(data, patient_id, cond_id):
                 ther_id = list(filter(lambda d: d['condition'] == succ_cond_id and d['successful']>90, patients_df[patients_df.id == patient_id].trials.values[0]))[0]['therapy']
 
                 ther_row = therapies_df[therapies_df.id == ther_id]
-                # ther_row['details'] = f"cured with success on itself" 
-                reccomended_ther = reccomended_ther.append(ther_row, ignore_index = True)
-                #return reccomended_ther
-            # else:
+                reccomended_ther = reccomended_ther.append(ther_row, ignore_index = True)  
+
             # find cured patients subset
             print(f"> Find {cond_id} cured patients subset")
             pat_cured = []
-            for i in patients_df.id.values:
-                if any(d['kind'] == cond_id and d['cured'] != None for d in patients_df[patients_df.id == i].conditions.values[0]):
-                    #print(i)
+            for pat in patients_df.id.values:
+                if any(d['kind'] == cond_id and d['cured'] != None for d in patients_df[patients_df.id == pat].conditions.values[0]):
                     
-                    pat_cured.append(i)
+                    pat_cured.append(pat)
+            # find candidate therapies that cured patients
+            candidates_ther = [] 
+            successful = []       
+            for pat in pat_cured:
+                # extract each pat_cured cond_id id
+                succ_cond_id = list(filter(lambda d: d['kind'] == cond_id, patients_df[patients_df.id == pat].conditions.values[0]))[0]['id'] 
+                ther_id = list(filter(lambda d: d['condition'] == succ_cond_id and d['successful']>90, patients_df[patients_df.id == pat].trials.values[0]))[0]['therapy']
+                success = list(filter(lambda d: d['condition'] == succ_cond_id and d['successful']>90, patients_df[patients_df.id == pat].trials.values[0]))[0]['successful']
+                successful.append(success)
+                candidates_ther.append(ther_id)
             # build patient utility matrix
-            patient_id_u_mat = utility_matrix_single_p(data, patient_id).to_numpy()
+            patient_id_u_mat = utility_matrix(patient_id, data).to_numpy()
+            
             # build cured patient utility matrix and calculate cosine similarity with patient id matrix
             cosine_sim = []
-
             for i in tqdm(pat_cured, desc="Calculating cosine distances"):
-                cured_u_mat = utility_matrix_single_p(data, i).to_numpy()
-                cosine_sim_pat = cosine_similarity(patient_id_u_mat, cured_u_mat)
+                cured_u_mat = utility_matrix(i, data).to_numpy()
+                cosine_sim_pat = 1 - distance.cosine(patient_id_u_mat.flatten(), cured_u_mat.flatten())
                 cosine_sim.append(cosine_sim_pat)
             
             cos_sim_df = pd.DataFrame({"pat_cured" : pat_cured, 
-                "cosine_similarity": cosine_sim})
-            cos_sim_df_sort = cos_sim_df.sort_values("cosine_similarity", ascending=False)
+                "cosine_similarity": cosine_sim, "candidate_therapy": candidates_ther, "successful": successful})
+            cos_sim_df['weighted_rate'] = cos_sim_df["cosine_similarity"] * cos_sim_df["successful"]
+            cos_sim_df_sort = cos_sim_df.sort_values("weighted_rate", ascending=False)
             
             print("> Compose recommended therapies ranking list")
-            # extract therapies that cured the most similar patients
-            for pat in cos_sim_df_sort.pat_cured.values:
+            for ther in cos_sim_df_sort.candidate_therapy.values:
                 if len(reccomended_ther) < 5:
-                    succ_cond_id = list(filter(lambda d: d['kind'] == cond_id, patients_df[patients_df.id == pat].conditions.values[0]))[0]['id'] 
-                    ther_id = list(filter(lambda d: d['condition'] == succ_cond_id and d['successful']>90, patients_df[patients_df.id == pat].trials.values[0]))[0]['therapy']
-                    
-                    # similarity = cos_sim_df_sort[cos_sim_df_sort.pat_cured == pat]['cosine_similarity'].values[0]
-                    ther_row = therapies_df[therapies_df.id == ther_id]
-                    # ther_row['details'] = f"cured with success on {pat} ({similarity} cosine similarity with {patient_id})" 
                     # add only therapies that are not in the reccomandation yet
-                    if ther_id not in reccomended_ther.id.values:
+                    if ther not in reccomended_ther.id.values:
+                        ther_row = therapies_df[therapies_df.id == ther]
                         reccomended_ther = reccomended_ther.append(ther_row, ignore_index = True)
     
     return reccomended_ther
 
+
+start_time = time.monotonic()
 # execute the function                
 res = my_program2(data, patient_id, cond_id)   
-
 end_time = time.monotonic()
 tot_time = timedelta(seconds=end_time - start_time)
 
 # save the results 
 count = 1
+n_patients = len(patients_df)
 if test == "test":
     with open("../results/test.txt", 'a') as f:
-        f.write(f"Output for 'python recommendation.py {data_path } {patient_id} {cond_id})'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
+        f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id})'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
         for idx,row in res.iterrows():
             name = res[res.id == row.id].name.values[0]
             f.write(f"{count}^: {row.id}  |  {name}  |  {row.type} \n")
@@ -140,7 +155,7 @@ if test == "test":
         f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
 elif test =="baseline_evaluation":
     with open("../results/baseline_eval.txt", 'a') as f:
-            f.write(f"Output for 'python recommendation.py {data_path } {patient_id} {cond_id})'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
+            f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id})'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
             for idx,row in res.iterrows():
                 name = res[res.id == row.id].name.values[0]
                 f.write(f"{count}^: {row.id}  |  {name}  |  {row.type} \n")
@@ -149,8 +164,8 @@ elif test =="baseline_evaluation":
             f.write(f"Time of program execution: {tot_time} \n")
             f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
 elif test =="single_run":
-    with open("../results/results.txt", 'a') as f:
-            f.write(f"Output for 'python recommendation.py {data_path } {patient_id} {cond_id})'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
+    with open("results.txt", 'a') as f:
+            f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id})'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
             for idx,row in res.iterrows():
                 name = res[res.id == row.id].name.values[0]
                 f.write(f"{count}^: {row.id}  |  {name}  |  {row.type} \n")
@@ -158,8 +173,17 @@ elif test =="single_run":
             f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
             f.write(f"Time of program execution: {tot_time} \n")
             f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
+elif test =="scalability_test":
+    with open("../results/scalability_test.txt", 'a') as f:
+            f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
+            f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id})'\n > Recommended therapies for {patient_id} to treat condition '{cond}' ({n_patients} patients dataset): \n")
+            for idx,row in res.iterrows():
+                name = res[res.id == row.id].name.values[0]
+                f.write(f"{count}^: {row.id}  |  {name}  |  {row.type} \n")
+                count += 1
+            f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
+            f.write(f"Time of program execution: {tot_time} for {n_patients} patients \n")
+            f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
 
-print("> Results and execution time are stored in 'results/results.txt' file")
 
-
-#print(timedelta(seconds=end_time - start_time)) 
+print("> Results and execution time are stored")

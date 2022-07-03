@@ -1,2 +1,0 @@
-- aggiungere atrtibuti tipo "gravità" alle conditions?
-- aggiungere età e gruppo sanguinio ai pazienti?

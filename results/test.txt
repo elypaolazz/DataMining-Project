@@ -1,0 +1,150 @@
+Output for 'python recommendation.py ../data/full_data.json pat_9776 cond_284)'
+ > Recommended therapies for pat_9776 to treat condition 'Tooth decay': 
+1^: ther_36  |  Home oxygen treatment  |  Medicines and medical aids 
+2^: ther_4  |  Antibiotics  |  Medicines and medical aids 
+3^: ther_18  |  Chorionic villus sampling  |  Biopsies 
+4^: ther_21  |  Coronary artery bypass graft  |  Surgical procedures 
+5^: ther_20  |  Colposcopy  |  Non-surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:25.421000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_937 cond_13)'
+ > Recommended therapies for pat_937 to treat condition 'Allergies': 
+1^: ther_17  |  Children's vision screening  |  Routine tests and examinations 
+2^: ther_16  |  Chemotherapy  |  Non-surgical procedures 
+3^: ther_40  |  Ibuprofen  |  Medicines and medical aids 
+4^: ther_18  |  Chorionic villus sampling  |  Biopsies 
+5^: ther_26  |  Dentures (false teeth)  |  Dental treatments 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:23.094000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_5435 cond_20)'
+ > Recommended therapies for pat_5435 to treat condition 'Anxiety': 
+1^: ther_40  |  Ibuprofen  |  Medicines and medical aids 
+2^: ther_45  |  Liver transplant  |  Surgical procedures 
+3^: ther_33  |  Hearing tests for children  |  Routine tests and examinations 
+4^: ther_2  |  Amputation  |  Surgical procedures 
+5^: ther_3  |  Anaesthesia  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:19.625000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_9124 cond_227)'
+ > Recommended therapies for pat_9124 to treat condition 'Personality disorder': 
+1^: ther_24  |  Cytosponge  |  Non-surgical procedures 
+2^: ther_10  |  Beta-blockers  |  Medicines and medical aids 
+3^: ther_5  |  Antidepressants  |  Medicines and medical aids 
+4^: ther_30  |  Fluoride  |  Dental treatments 
+5^: ther_66  |  X-ray  |  Scans and X-rays 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:21.609000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_7410 cond_209)'
+ > Recommended therapies for pat_7410 to treat condition 'Oesophageal cancer': 
+1^: ther_12  |  Blood tests  |  Blood tests 
+2^: ther_42  |  Inguinal hernia repair  |  Surgical procedures 
+3^: ther_57  |  Psychotherapy  |  Counselling and therapies 
+4^: ther_22  |  Corticosteroids  |  Medicines and medical aids 
+5^: ther_35  |  Hip replacement  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:21.125000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_9833 cond_73)'
+ > Recommended therapies for pat_9833 to treat condition 'Conjunctivitis': 
+1^: ther_3  |  Anaesthesia  |  Medicines and medical aids 
+2^: ther_32  |  Hand tendon repair  |  Surgical procedures 
+3^: ther_13  |  Blood transfusion  |  Non-surgical procedures 
+4^: ther_62  |  Ultrasound scan  |  Scans and X-rays 
+5^: ther_54  |  Orthodontics  |  Non-surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:20.172000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_1159 cond_306)'
+ > Recommended therapies for pat_1159 to treat condition 'Wilms’ tumour': 
+1^: ther_20  |  Colposcopy  |  Non-surgical procedures 
+2^: ther_24  |  Cytosponge  |  Non-surgical procedures 
+3^: ther_41  |  Ileostomy  |  Surgical procedures 
+4^: ther_32  |  Hand tendon repair  |  Surgical procedures 
+5^: ther_43  |  Knee replacement  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:22.532000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_3343 cond_190)'
+ > Recommended therapies for pat_3343 to treat condition 'Motor neurone disease (MND)': 
+1^: ther_48  |  Lung transplant  |  Surgical procedures 
+2^: ther_11  |  Biopsy  |  Biopsies 
+3^: ther_39  |  Hysteroscopy  |  Non-surgical procedures 
+4^: ther_20  |  Colposcopy  |  Non-surgical procedures 
+5^: ther_57  |  Psychotherapy  |  Counselling and therapies 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:27.297000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_2410 cond_3)'
+ > Recommended therapies for pat_2410 to treat condition 'Acute lymphoblastic leukaemia': 
+1^: ther_62  |  Ultrasound scan  |  Scans and X-rays 
+2^: ther_35  |  Hip replacement  |  Surgical procedures 
+3^: ther_39  |  Hysteroscopy  |  Non-surgical procedures 
+4^: ther_4  |  Antibiotics  |  Medicines and medical aids 
+5^: ther_19  |  Colostomy  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:30.500000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_1832 cond_249)'
+ > Recommended therapies for pat_1832 to treat condition 'Scabies': 
+1^: ther_35  |  Hip replacement  |  Surgical procedures 
+2^: ther_37  |  Homeopathy  |  Medicines and medical aids 
+3^: ther_41  |  Ileostomy  |  Surgical procedures 
+4^: ther_60  |  Statins  |  Medicines and medical aids 
+5^: ther_43  |  Knee replacement  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:23.281000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_3821 cond_27)'
+ > Recommended therapies for pat_3821 to treat condition 'Attention deficit hyperactivity disorder (ADHD)': 
+1^: ther_8  |  Aspirin  |  Medicines and medical aids 
+2^: ther_15  |  Bronchodilators  |  Medicines and medical aids 
+3^: ther_29  |  Electrocardiogram (ECG)  |  Scans and X-rays 
+4^: ther_61  |  Transurethral resection of the prostate (TURP)  |  Surgical procedures 
+5^: ther_9  |  Barium enema  |  Non-surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:30.203000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_9356 cond_99)'
+ > Recommended therapies for pat_9356 to treat condition 'Ebola virus disease': 
+1^: ther_54  |  Orthodontics  |  Non-surgical procedures 
+2^: ther_30  |  Fluoride  |  Dental treatments 
+3^: ther_12  |  Blood tests  |  Blood tests 
+4^: ther_46  |  Local anaesthesia  |  Medicines and medical aids 
+5^: ther_35  |  Hip replacement  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:29.750000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_7321 cond_60)'
+ > Recommended therapies for pat_7321 to treat condition 'Chronic kidney disease': 
+1^: ther_55  |  Paracetamol  |  Medicines and medical aids 
+2^: ther_60  |  Statins  |  Medicines and medical aids 
+3^: ther_47  |  Lumbar decompression surgery  |  Surgical procedures 
+4^: ther_13  |  Blood transfusion  |  Non-surgical procedures 
+5^: ther_0  |  Abortion  |  Surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:30.516000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_6623 cond_218)'
+ > Recommended therapies for pat_6623 to treat condition 'Overactive thyroid': 
+1^: ther_43  |  Knee replacement  |  Surgical procedures 
+2^: ther_55  |  Paracetamol  |  Medicines and medical aids 
+3^: ther_63  |  Urinary catheterisation  |  Medicines and medical aids 
+4^: ther_58  |  Radiotherapy  |  Non-surgical procedures 
+5^: ther_39  |  Hysteroscopy  |  Non-surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:23.031000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python recommendation.py ../data/full_data.json pat_1842 cond_74)'
+ > Recommended therapies for pat_1842 to treat condition 'Constipation': 
+1^: ther_15  |  Bronchodilators  |  Medicines and medical aids 
+2^: ther_47  |  Lumbar decompression surgery  |  Surgical procedures 
+3^: ther_4  |  Antibiotics  |  Medicines and medical aids 
+4^: ther_23  |  CT scan  |  Scans and X-rays 
+5^: ther_63  |  Urinary catheterisation  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:21.812000 
+-----------------------------------------------------------------------------------------------------------------------------------------

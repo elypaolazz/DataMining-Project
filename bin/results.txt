@@ -1,0 +1,20 @@
+Output for 'python ther_recommendation.py ../data/full_data.json pat_9776 cond_28)'
+ > Recommended therapies for pat_9776 to treat condition 'Autistic spectrum disorder (ASD)': 
+1^: ther_58  |  Radiotherapy  |  Non-surgical procedures 
+2^: ther_19  |  Colostomy  |  Surgical procedures 
+3^: ther_4  |  Antibiotics  |  Medicines and medical aids 
+4^: ther_37  |  Homeopathy  |  Medicines and medical aids 
+5^: ther_8  |  Aspirin  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:13.219000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data_1k.json pat_0 cond_1)'
+ > Recommended therapies for pat_0 to treat condition 'Acne': 
+1^: ther_25  |  Decongestants  |  Medicines and medical aids 
+2^: ther_65  |  Wisdom tooth removal  |  Dental treatments 
+3^: ther_2  |  Amputation  |  Surgical procedures 
+4^: ther_48  |  Lung transplant  |  Surgical procedures 
+5^: ther_22  |  Corticosteroids  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:00.531000 
+-----------------------------------------------------------------------------------------------------------------------------------------

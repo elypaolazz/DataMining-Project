@@ -1,2 +1,0 @@
-deve contenere: binary file of the execution of the program alongside the 
-results it produces through the various runs you have performed. 

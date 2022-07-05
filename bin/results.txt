@@ -18,3 +18,33 @@ Output for 'python ther_recommendation.py ../data/full_data_1k.json pat_0 cond_1
 -----------------------------------------------------------------------------------------------------------------------------------------
 Time of program execution: 0:00:00.531000 
 -----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data.json pat_67 cond_55)'
+ > Recommended therapies for pat_67 to treat condition 'Chest infection': 
+1^: ther_66  |  X-ray  |  Scans and X-rays 
+2^: ther_32  |  Hand tendon repair  |  Surgical procedures 
+3^: ther_8  |  Aspirin  |  Medicines and medical aids 
+4^: ther_42  |  Inguinal hernia repair  |  Surgical procedures 
+5^: ther_56  |  PET scan  |  Scans and X-rays 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:12.469000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data.json pat_889 cond_78)'
+ > Recommended therapies for pat_889 to treat condition 'Croup': 
+1^: ther_38  |  Hormone replacement therapy (HRT)  |  Medicines and medical aids 
+2^: ther_48  |  Lung transplant  |  Surgical procedures 
+3^: ther_41  |  Ileostomy  |  Surgical procedures 
+4^: ther_12  |  Blood tests  |  Blood tests 
+5^: ther_13  |  Blood transfusion  |  Non-surgical procedures 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:12.110000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data.json pat_1255 cond_208)'
+ > Recommended therapies for pat_1255 to treat condition 'Obstructive sleep apnoea': 
+1^: ther_27  |  Dialysis  |  Non-surgical procedures 
+2^: ther_46  |  Local anaesthesia  |  Medicines and medical aids 
+3^: ther_14  |  Breast and cosmetic implants  |  Surgical procedures 
+4^: ther_62  |  Ultrasound scan  |  Scans and X-rays 
+5^: ther_3  |  Anaesthesia  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:14.094000 
+-----------------------------------------------------------------------------------------------------------------------------------------

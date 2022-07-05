@@ -1,0 +1,110 @@
+Output for 'python baseline_method.py ../data/full_data.json pat_0 cond_0'
+ > Recommended therapies for pat_0 to treat condition Abdominal aortic aneurysm: 
+1^: ther_63  |  Urinary catheterisation  |  Medicines and medical aids 
+2^: ther_19  |  Colostomy  |  Surgical procedures 
+3^: ther_38  |  Hormone replacement therapy (HRT)  |  Medicines and medical aids 
+4^: ther_53  |  Occupational therapy  |  Counselling and therapies 
+5^: ther_5  |  Antidepressants  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:07:10.343000
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data.json pat_0 cond_0'
+ > Recommended therapies for pat_0 to treat condition 'Abdominal aortic aneurysm': 
+1^: ther_63  |  Urinary catheterisation  |  Medicines and medical aids 
+2^: ther_19  |  Colostomy  |  Surgical procedures 
+3^: ther_38  |  Hormone replacement therapy (HRT)  |  Medicines and medical aids 
+4^: ther_53  |  Occupational therapy  |  Counselling and therapies 
+5^: ther_5  |  Antidepressants  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:14.781000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python baseline_method.py ../data/full_data.json pat_1255 cond_208'
+ > Recommended therapies for pat_1255 to treat condition Obstructive sleep apnoea: 
+1^: ther_27  |  Dialysis  |  Non-surgical procedures 
+2^: ther_46  |  Local anaesthesia  |  Medicines and medical aids 
+3^: ther_14  |  Breast and cosmetic implants  |  Surgical procedures 
+4^: ther_62  |  Ultrasound scan  |  Scans and X-rays 
+5^: ther_3  |  Anaesthesia  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:06:43.687000
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data.json pat_1255 cond_208'
+ > Recommended therapies for pat_1255 to treat condition 'Obstructive sleep apnoea': 
+1^: ther_27  |  Dialysis  |  Non-surgical procedures 
+2^: ther_46  |  Local anaesthesia  |  Medicines and medical aids 
+3^: ther_14  |  Breast and cosmetic implants  |  Surgical procedures 
+4^: ther_62  |  Ultrasound scan  |  Scans and X-rays 
+5^: ther_3  |  Anaesthesia  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:13.390000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python baseline_method.py ../data/full_data.json pat_5698 cond_99'
+ > Recommended therapies for pat_5698 to treat condition 'Ebola virus disease': 
+1^: ther_21  |  Coronary artery bypass graft  |  Surgical procedures 
+2^: ther_41  |  Ileostomy  |  Surgical procedures 
+3^: ther_10  |  Beta-blockers  |  Medicines and medical aids 
+4^: ther_54  |  Orthodontics  |  Non-surgical procedures 
+5^: ther_5  |  Antidepressants  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:06:11.887000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data.json pat_5698 cond_99'
+ > Recommended therapies for pat_5698 to treat condition 'Ebola virus disease': 
+1^: ther_21  |  Coronary artery bypass graft  |  Surgical procedures 
+2^: ther_41  |  Ileostomy  |  Surgical procedures 
+3^: ther_10  |  Beta-blockers  |  Medicines and medical aids 
+4^: ther_54  |  Orthodontics  |  Non-surgical procedures 
+5^: ther_5  |  Antidepressants  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:12.797000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python baseline_method.py ../data/full_data.json pat_8965 cond_301'
+ > Recommended therapies for pat_8965 to treat condition 'Vitamin B12 or folate deficiency anaemia': 
+1^: ther_33  |  Hearing tests for children  |  Routine tests and examinations 
+2^: ther_45  |  Liver transplant  |  Surgical procedures 
+3^: ther_48  |  Lung transplant  |  Surgical procedures 
+4^: ther_60  |  Statins  |  Medicines and medical aids 
+5^: ther_37  |  Homeopathy  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:06:14.133000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data.json pat_8965 cond_301'
+ > Recommended therapies for pat_8965 to treat condition 'Vitamin B12 or folate deficiency anaemia': 
+1^: ther_33  |  Hearing tests for children  |  Routine tests and examinations 
+2^: ther_45  |  Liver transplant  |  Surgical procedures 
+3^: ther_48  |  Lung transplant  |  Surgical procedures 
+4^: ther_60  |  Statins  |  Medicines and medical aids 
+5^: ther_37  |  Homeopathy  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:15.125000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python baseline_method.py ../data/full_data.json pat_755 cond_265'
+ > Recommended therapies for pat_755 to treat condition 'Spleen problems and spleen removal': 
+1^: ther_22  |  Corticosteroids  |  Medicines and medical aids 
+2^: ther_57  |  Psychotherapy  |  Counselling and therapies 
+3^: ther_36  |  Home oxygen treatment  |  Medicines and medical aids 
+4^: ther_32  |  Hand tendon repair  |  Surgical procedures 
+5^: ther_10  |  Beta-blockers  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:07:05.203000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python ther_recommendation.py ../data/full_data.json pat_755 cond_265'
+ > Recommended therapies for pat_755 to treat condition 'Spleen problems and spleen removal': 
+1^: ther_22  |  Corticosteroids  |  Medicines and medical aids 
+2^: ther_57  |  Psychotherapy  |  Counselling and therapies 
+3^: ther_36  |  Home oxygen treatment  |  Medicines and medical aids 
+4^: ther_32  |  Hand tendon repair  |  Surgical procedures 
+5^: ther_10  |  Beta-blockers  |  Medicines and medical aids 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:00:15.203000 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Output for 'python baseline_method.py ../data/full_data_5k.json pat_125 cond_208'
+ > Recommended therapies for pat_125 to treat condition Obstructive sleep apnoea: 
+1^: ther_20  |  Colposcopy  |  Non-surgical procedures 
+2^: ther_59  |  Selective serotonin reuptake inhibitors (SSRIs)  |  Medicines and medical aids 
+3^: ther_16  |  Chemotherapy  |  Non-surgical procedures 
+4^: ther_8  |  Aspirin  |  Medicines and medical aids 
+5^: ther_17  |  Children's vision screening  |  Routine tests and examinations 
+-----------------------------------------------------------------------------------------------------------------------------------------
+Time of program execution: 0:03:22.172000
+-----------------------------------------------------------------------------------------------------------------------------------------

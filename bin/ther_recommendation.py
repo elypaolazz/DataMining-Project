@@ -91,38 +91,41 @@ def my_program2(data, patient_id, cond_id):
                 ther_row = therapies_df[therapies_df.id == ther_id]
                 reccomended_ther = reccomended_ther.append(ther_row, ignore_index = True)  
 
-            # find cured patients subset
+            # find condition's patients subset
             print(f"> Find {cond_id} cured patients subset")
             pat_cured = []
             for pat in patients_df.id.values:
                 if any(d['kind'] == cond_id and d['cured'] != None for d in patients_df[patients_df.id == pat].conditions.values[0]):
                     
                     pat_cured.append(pat)
-            # find candidate therapies that cured patients
+            # find candidate therapies that patients tried
             candidates_ther = [] 
             successful = []       
             for pat in pat_cured:
-                # extract each pat_cured cond_id id
+                # extract each patient's therapy info
                 succ_cond_id = list(filter(lambda d: d['kind'] == cond_id, patients_df[patients_df.id == pat].conditions.values[0]))[0]['id'] 
                 ther_id = list(filter(lambda d: d['condition'] == succ_cond_id and d['successful']>90, patients_df[patients_df.id == pat].trials.values[0]))[0]['therapy']
                 success = list(filter(lambda d: d['condition'] == succ_cond_id and d['successful']>90, patients_df[patients_df.id == pat].trials.values[0]))[0]['successful']
                 successful.append(success)
                 candidates_ther.append(ther_id)
-            # build patient utility matrix
+            # build input patient utility matrix
             patient_id_u_mat = utility_matrix(patient_id, data).to_numpy()
             
-            # build cured patient utility matrix and calculate cosine similarity with patient id matrix
+            # build condition's patients utility matrix and calculate cosine similarity with input patient matrix
             cosine_sim = []
             for i in tqdm(pat_cured, desc="Calculating cosine distances"):
                 cured_u_mat = utility_matrix(i, data).to_numpy()
                 cosine_sim_pat = 1 - distance.cosine(patient_id_u_mat.flatten(), cured_u_mat.flatten())
                 cosine_sim.append(cosine_sim_pat)
             
+            # build a dataframe containing condition's patients cosine similarity with input patients, their therapy's info
+            # and the weighted rate
             cos_sim_df = pd.DataFrame({"pat_cured" : pat_cured, 
                 "cosine_similarity": cosine_sim, "candidate_therapy": candidates_ther, "successful": successful})
             cos_sim_df['weighted_rate'] = cos_sim_df["cosine_similarity"] * cos_sim_df["successful"]
             cos_sim_df_sort = cos_sim_df.sort_values("weighted_rate", ascending=False)
             
+            # compose the final rank list
             print("> Compose recommended therapies ranking list")
             for ther in cos_sim_df_sort.candidate_therapy.values:
                 if len(reccomended_ther) < 5:
@@ -140,12 +143,25 @@ res = my_program2(data, patient_id, cond_id)
 end_time = time.monotonic()
 tot_time = timedelta(seconds=end_time - start_time)
 
+# show in terminal
+print("Recommended therapies ranking:")
+count = 1
+for idx,row in res.iterrows():
+    name = res[res.id == row.id].name.values[0]
+    print(f"{count}^: {row.id}  |  {name}  |  {row.type} \n")
+    count += 1
+print("-----------------------------------------------------------------------------------------------------------------------------------------\n")
+print(f"Time of program execution: {tot_time} \n")
+print("-----------------------------------------------------------------------------------------------------------------------------------------\n")
+
+    
+
 # save the results 
 count = 1
 n_patients = len(patients_df)
 if test == "test":
     with open("../results/test.txt", 'a') as f:
-        f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id})'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
+        f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id}'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
         for idx,row in res.iterrows():
             name = res[res.id == row.id].name.values[0]
             f.write(f"{count}^: {row.id}  |  {name}  |  {row.type} \n")
@@ -153,9 +169,10 @@ if test == "test":
         f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
         f.write(f"Time of program execution: {tot_time} \n")
         f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
+    print("> Results and execution time are stored in results/test.txt")
 elif test =="baseline_evaluation":
     with open("../results/baseline_eval.txt", 'a') as f:
-            f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id})'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
+            f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id}'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
             for idx,row in res.iterrows():
                 name = res[res.id == row.id].name.values[0]
                 f.write(f"{count}^: {row.id}  |  {name}  |  {row.type} \n")
@@ -163,9 +180,10 @@ elif test =="baseline_evaluation":
             f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
             f.write(f"Time of program execution: {tot_time} \n")
             f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
+    print("> Results and execution time are stored in results/baseline_eval.txt")
 elif test =="single_run":
     with open("results.txt", 'a') as f:
-            f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id})'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
+            f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id}'\n > Recommended therapies for {patient_id} to treat condition '{cond}': \n")
             for idx,row in res.iterrows():
                 name = res[res.id == row.id].name.values[0]
                 f.write(f"{count}^: {row.id}  |  {name}  |  {row.type} \n")
@@ -173,10 +191,11 @@ elif test =="single_run":
             f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
             f.write(f"Time of program execution: {tot_time} \n")
             f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
+    print("> Results and execution time are stored in results.txt")
 elif test =="scalability_test":
     with open("../results/scalability_test.txt", 'a') as f:
             f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
-            f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id})'\n > Recommended therapies for {patient_id} to treat condition '{cond}' ({n_patients} patients dataset): \n")
+            f.write(f"Output for 'python ther_recommendation.py {data_path } {patient_id} {cond_id}'\n > Recommended therapies for {patient_id} to treat condition '{cond}' ({n_patients} patients dataset): \n")
             for idx,row in res.iterrows():
                 name = res[res.id == row.id].name.values[0]
                 f.write(f"{count}^: {row.id}  |  {name}  |  {row.type} \n")
@@ -184,6 +203,6 @@ elif test =="scalability_test":
             f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
             f.write(f"Time of program execution: {tot_time} for {n_patients} patients \n")
             f.write("-----------------------------------------------------------------------------------------------------------------------------------------\n")
+    print("> Results and execution time are stored in results/scalability_test.txt")
 
 
-print("> Results and execution time are stored")

@@ -354,9 +354,6 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
 ################################################
 
 def utility_matrix(patient_id, data):
-    # open dataset
-    # with open('../../data/full_data.json', 'r') as file:
-    #     data = json.load(file)
     
     conditions_df = pd.DataFrame(data['Conditions'])
     therapies_df = pd.DataFrame(data['Therapies'])

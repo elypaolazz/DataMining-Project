@@ -62,5 +62,5 @@ Output for 'python ther_recommendation.py ../data/full_data_100k.json pat_0 cond
 4^: ther_45  |  Liver transplant  |  Surgical procedures 
 5^: ther_58  |  Radiotherapy  |  Non-surgical procedures 
 -----------------------------------------------------------------------------------------------------------------------------------------
-Time of program execution: 0:09:31.078000 for 100000 patients 
+Time of program execution: 0:17:51.210000 for 100000 patients 
 -----------------------------------------------------------------------------------------------------------------------------------------

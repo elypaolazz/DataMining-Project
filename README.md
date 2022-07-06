@@ -21,7 +21,6 @@ Besides that, the scripts employs the following libraries, which need to be inst
 - `requests 2.28.0`
 - `scikit-learn 1.1.1`
 - `scipy 1.8.1`
-- `sklearn 0.0`
 - `tqdm 4.64.0`
 - `urllib3 1.26.9`
 
@@ -102,3 +101,10 @@ The `doc` folder contains the project report
 ├── requirements.txt
 └── README.md
 ```
+
+A brief description of each folder follows:
+- bin, contains the files of the program execution along with the results it produces through the various executions performed;
+- data, contains the generated dataset which includes 10000 patients with a maximum of 20 conditions each and a maximum of 12 trials for each conditions;
+- doc, which contains the project report;
+- results, containing the results of the various tests ( for the 15 required test cases, baseline and scalability evaluation);
+- src, which contains all the useful scripts for running the program and conducting the tests.

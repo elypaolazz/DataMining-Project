@@ -354,6 +354,9 @@ def generate_full_patients(patients_dict, list_of_conditions_ids, list_of_therap
 ################################################
 
 def utility_matrix(patient_id, data):
+    """
+    Populate the utility matrix row for the input patiet
+    """
     
     conditions_df = pd.DataFrame(data['Conditions'])
     therapies_df = pd.DataFrame(data['Therapies'])
@@ -393,9 +396,6 @@ def utility_matrix(patient_id, data):
     return final_matrix
 
 def utility_matrix_single_p(data, patients_id):
-    # # open dataset
-    # with open('../../data/full_data.json', 'r') as file:
-    #     data = json.load(file)
     
     conditions_df = pd.DataFrame(data['Conditions'])
     therapies_df = pd.DataFrame(data['Therapies'])

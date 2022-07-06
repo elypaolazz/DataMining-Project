@@ -98,13 +98,3 @@ Output for 'python ther_recommendation.py ../data/full_data.json pat_755 cond_26
 -----------------------------------------------------------------------------------------------------------------------------------------
 Time of program execution: 0:00:15.203000 
 -----------------------------------------------------------------------------------------------------------------------------------------
-Output for 'python baseline_method.py ../data/full_data_5k.json pat_125 cond_208'
- > Recommended therapies for pat_125 to treat condition Obstructive sleep apnoea: 
-1^: ther_20  |  Colposcopy  |  Non-surgical procedures 
-2^: ther_59  |  Selective serotonin reuptake inhibitors (SSRIs)  |  Medicines and medical aids 
-3^: ther_16  |  Chemotherapy  |  Non-surgical procedures 
-4^: ther_8  |  Aspirin  |  Medicines and medical aids 
-5^: ther_17  |  Children's vision screening  |  Routine tests and examinations 
------------------------------------------------------------------------------------------------------------------------------------------
-Time of program execution: 0:03:22.172000
------------------------------------------------------------------------------------------------------------------------------------------

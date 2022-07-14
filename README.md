@@ -65,7 +65,7 @@ python baseline_method <dataset_path> <patient_id> <cond_id>
 ```
 An then running:
 ```
-python myprogram.py <dataset_path> <patient_id> <cond_id> baseline_evaluation
+python ther_recommendation.py <dataset_path> <patient_id> <cond_id> baseline_evaluation
 ```
 The result of the two runs with the corresponding time execution performances are stored in the file `results/baseline_eval.txt`.
 

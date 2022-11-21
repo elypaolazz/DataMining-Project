@@ -103,8 +103,8 @@ The `doc` folder contains the project report
 ```
 
 A brief description of each folder follows:
-- bin, contains the files of the program execution along with the results it produces through the various executions performed;
-- data, contains the generated dataset which includes 10000 patients with a maximum of 20 conditions each and a maximum of 12 trials for each conditions;
-- doc, which contains the project report;
-- results, containing the results of the various tests ( for the 15 required test cases, baseline and scalability evaluation);
-- src, which contains all the useful scripts for running the program and conducting the tests.
+- `bin`, contains the files of the program execution along with the results it produces through the various executions performed;
+- `data`, contains the generated dataset which includes 10000 patients with a maximum of 20 conditions each and a maximum of 12 trials for each conditions;
+- `doc`, which contains the project report;
+- `results`, containing the results of the various tests ( for the 15 required test cases, baseline and scalability evaluation);
+- `src`, which contains all the useful scripts for running the program and conducting the tests.
